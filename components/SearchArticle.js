@@ -1,15 +1,15 @@
 /** @format */
 import Button from "@material-tailwind/react/Button";
 import moment from "moment";
-function CountryNewsCard({
-  title,
+function SearchArticle({
+  author,
+  content,
+  source,
+  publishedAt,
   url,
   urlToImage,
-  publishedAt,
   description,
-  content,
-  author,
-  source,
+  title,
 }) {
   return (
     <div className="my-2 p-3 bg-cardbg flex flex-col lg:flex-row xl:flex-row 2xl:flex-row rounded-xl shadow-2xl">
@@ -55,4 +55,4 @@ function CountryNewsCard({
   );
 }
 
-export default CountryNewsCard;
+export default SearchArticle;

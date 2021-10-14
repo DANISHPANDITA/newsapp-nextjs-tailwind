@@ -1,8 +1,12 @@
 /** @format */
+import Head from "next/head";
 
 function SubsPage() {
   return (
     <div class="py-4 px-6 2xl:flex-row bg-gray-700">
+      <Head>
+        <title>Pricing</title>
+      </Head>
       <h1 class="text-center text-4xl  font-serif text-red-600 font-medium leading-snug tracking-wider">
         Pricing
       </h1>

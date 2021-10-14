@@ -6,24 +6,36 @@ import DropdownLink from "@material-tailwind/react/DropdownLink";
 import Icon from "@material-tailwind/react/Icon";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/dist/client/router";
+import { useState } from "react";
 
 function Header() {
+  const [search, setsearch] = useState("");
   const { data: session } = useSession();
   const router = useRouter();
   return (
     <div className="flex flex-row items-center w-11/12 mx-auto mt-3 p-3 space-x-4 shadow-xl rounded-xl bg-headerbg top-0 sticky z-50">
-      <img
-        src={session?.user?.image}
-        alt=""
-        className="rounded-full w-10 h-10 bg-gray-700"
-      />
+      {session && (
+        <img
+          src={session?.user?.image}
+          alt=""
+          className="rounded-full w-10 h-10 bg-gray-700"
+        />
+      )}
       <div className="w-full relative text-gray-600 focus-within:text-gray-400">
         <span className="absolute inset-y-0 left-0 flex items-center pl-2">
           <Icon name="search" size="regular" />
         </span>
         <input
           type="search"
-          name="q"
+          value={search}
+          onChange={(e) => {
+            setsearch(e.target.value);
+          }}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              router.push(`/newssearch/${search}`);
+            }
+          }}
           className="w-full py-2 text-lg text-gray-900 bg-white rounded-xl px-10 focus:outline-none focus:bg-gray-200  focus:text-gray-900 font-serif font-semibold border border-gray-200 focus:border-none"
           placeholder="Search for news..."
           autoComplete="off"

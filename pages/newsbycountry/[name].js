@@ -1,11 +1,14 @@
 /** @format */
 
+import Head from "next/head";
 import CountryNewsCard from "../../components/CountryNewsCard";
 import d from "../../countries";
-
 function Country({ query }) {
   return (
     <div className="p-2 bg-countrypagebg">
+      <Head>
+        <title>Search Results</title>
+      </Head>
       {query.articles.map((i) => (
         <CountryNewsCard
           title={i.title}
